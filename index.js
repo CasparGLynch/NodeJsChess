@@ -1,26 +1,25 @@
 const http = require('http');
+const fs = require('fs');
+const path = require('path');
 
 const port = 3000;
+const htmlPath = path.join(__dirname, 'public', 'index.html');
 
 const server = http.createServer((req, res) => {
-  const html = `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Hello World</title>
-      </head>
-      <body>
-        <h1>Hello World!</h1>
-      </body>
-    </html>
-  `;
-  
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/html');
-  res.end(html);
+  fs.readFile(htmlPath, 'utf8', (err, htmlContent) => {
+    if (err) {
+      res.statusCode = 500;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end('Internal Server Error');
+      return;
+    }
+
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/html');
+    res.end(htmlContent);
+  });
 });
 
 server.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
-
