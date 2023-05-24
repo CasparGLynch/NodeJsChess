@@ -31,10 +31,9 @@ wss.on("connection", function (ws) {
             // start game and assign a game id (NOTE: game_id generation needs updating)
             game_id = game_number;
             game_number++;
-            console.log(game_id);
             ws.game = new Game(game_id)
         }
-        let mess = new Message("active", game_id);
+        let mess = new Message("initial", ws.game.board);
         sendActive(wss, websocket, mess);
     });
     ws.on("close", function incoming() {

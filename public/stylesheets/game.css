@@ -16,6 +16,8 @@
     height: 12vmin;
     margin: 0;
     background-color: #5b7c99;
+    text-align: center;
+    font-size: 10vmin;
 }
 
 .tile-black:hover {
@@ -26,6 +28,8 @@
     width: 12vmin;
     height: 12vmin;
     background-color: #cff8ff;
+    text-align: center;
+    font-size: 10vmin;
 }
 
 .tile-white:hover {

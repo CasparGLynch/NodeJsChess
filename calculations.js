@@ -64,7 +64,6 @@ class Game {
                 this.board[row][column] = 0
             }
         }
-        console.log(this.board)
     }
 }
 
