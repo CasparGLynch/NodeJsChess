@@ -1,27 +1,33 @@
-.main-menu {
-    text-align: center;
-}
 #board {
     background-color: #ff8c42;
-    width: 80%;
-    height: 80%;
+    width: 96vmin;
+    height: 96vmin;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 2vmin;
+    margin-bottom: 2vmin;
     display: grid;
-    grid-template-columns: repeat(8, auto);
+    grid-template-columns: repeat(8, 12vmin);
     justify-content: start;
 }
 
 .tile-black {
     width: 12vmin;
     height: 12vmin;
-    margin: 0.1vmin;
+    margin: 0;
     background-color: #5b7c99;
+}
+
+.tile-black:hover {
+    background-color: #466077;
 }
 
 .tile-white {
     width: 12vmin;
     height: 12vmin;
-    margin: 0.1vmin;
     background-color: #cff8ff;
+}
+
+.tile-white:hover {
+    background-color: #b0d2d8;
 }

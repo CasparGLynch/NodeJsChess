@@ -1,20 +1,18 @@
-// function Message(type,data){
-//     this.type = type;
-//     this.data = data;
-// }
+function Message(type,data){
+    this.type = type;
+    this.data = data;
+}
 
-// const socket = new WebSocket("ws://localhost:3001");
-// socket.onopen = function(e) {
-//     socket.send(JSON.stringify(new Message('start', 0)));
-// };
-// socket.onclose = function(event){
-//     window.location.replace("/");
-// };
-// socket.onmessage = function(event){
+const socket = new WebSocket("ws://localhost:3001");
+socket.onopen = function(e) {
+    socket.send(JSON.stringify(new Message('start', 0)));
+};
+socket.onclose = function(event){
+    window.location.replace("/");
+};
+socket.onmessage = function(event){
 
-// }
-
-
+}
 // generate initialia board 
 window.onload = (function () {
     for (let row = 0; row < 8; row++){
