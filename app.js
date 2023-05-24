@@ -3,6 +3,17 @@ var http = require("http");
 const websocket = require("ws");
 const Game = require("./calculations");
 
+// setting up the chess AI
+var chessAI = require('chess-ai-kong');
+chessAI.setOptions(
+    {
+      depth: 4,
+      monitor: true,
+      strategy: 'basic',
+      timeout: 10000
+    }
+);
+
 var app = express();
 var port = process.argv[2];
 app.use(express.static(__dirname + "/public"));
