@@ -32,10 +32,9 @@ wss.on("connection", function (ws) {
             game_id = game_number;
             game_number++;
             console.log(game_id);
-            mess = new Message("active", game_id);
-            th.game = new Game(game_id)
-            sendActive(wss, websocket, mess);
+            ws.game = new Game(game_id)
         }
+        let mess = new Message("active", game_id);
         sendActive(wss, websocket, mess);
     });
     ws.on("close", function incoming() {

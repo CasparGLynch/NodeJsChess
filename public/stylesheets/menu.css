@@ -7,16 +7,15 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-color:coral;
+  background-color:#ff8c42;
 }
 
 .main-menu {
   text-align: center;
 }
-
 h1 {
-  font-size: 15vw;
-  margin-bottom: 1vw;
+  font-size: 15vmax;
+  margin-bottom: 1vmax;
   max-width: 100%;
 }
 
@@ -30,19 +29,19 @@ ul {
 }
 
 li {
-  margin-bottom: 2vw;
+  margin-bottom: 2vmax;
 }
 
 button {
   display: block;
-  width: 20vw;
-  padding: 1vw;
+  width: 20vmax;
+  padding: 1vmax;
   background-color: #333;
   color: coral;
   text-decoration: none;
   border: none;
-  border-radius: 2vw;
-  font-size: 1vw;
+  border-radius: 2vmax;
+  font-size: 1vmax;
   cursor: pointer;
 }
 
