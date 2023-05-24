@@ -12,7 +12,7 @@ Make sure you have the Node Package Manager (https://www.npmjs.com/)
 
 ```bash
   git clone ~instert ssh/https link~
-  cd NodeJsChess
+  cd NodeJsChess/
   npm install
   npm start
 ```
