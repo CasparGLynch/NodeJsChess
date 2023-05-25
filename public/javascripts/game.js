@@ -1,10 +1,7 @@
-var current_state = null;
 function Message(type,data){
     this.type = type;
     this.data = data;
 }
-
-
 
 const socket = new WebSocket("ws://localhost:3001");
 socket.onopen = function(e) {
@@ -16,7 +13,7 @@ socket.onclose = function(event){
 socket.onmessage = function(event){
     let resp = JSON.parse(event.data);
     if (resp.type == "initial"){
-        current_state = resp.data;
+        var current_state = resp.data;
         generate_board(current_state);
     }
 }
@@ -26,7 +23,7 @@ function get_piece_string(piece_code) {
         return '';
     } else if ((piece_code % 10) == 1) {
         if ((piece_code > 20)){
-            return '♗';
+            return '♙';
         }
         return '♟';
     } else if ((piece_code % 10) == 2) {
@@ -70,7 +67,12 @@ function generate_board(current_state){
             /**
              * Piece codes found in src/calculations.js
              */
-            div.textContent = get_piece_string(current_state[row][column]);
+            piece_str = get_piece_string(current_state[row][column]);
+            div.textContent = piece_str;
+            if (piece_str != ''){
+                div.style.cursor = 'pointer';
+            }
+
             document.getElementById("board").appendChild(div);
         }
     }
