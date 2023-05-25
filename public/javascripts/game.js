@@ -71,9 +71,31 @@ function generate_board(current_state){
             div.textContent = piece_str;
             if (piece_str != ''){
                 div.style.cursor = 'pointer';
+                div.addEventListener("click", function(event) {
+                    select_piece(event.target);
+                  });
             }
 
             document.getElementById("board").appendChild(div);
         }
+    }
+}
+
+var selected_pieces = Array();
+function select_piece(element) {
+    if (element.click_count == undefined){
+        element.click_count = 1;
+        selected_pieces.push(element.id);
+    } else {
+        element.click_count = undefined;
+        if (selected_pieces[0] == element.id){
+            selected_pieces.shift();
+        } else {
+            selected_pieces.pop();
+        }
+    }
+    if (selected_pieces.length == 2) {
+        socket.send(JSON.stringify(new Message('turn', selected_pieces)));
+        selected_pieces = Array();
     }
 }

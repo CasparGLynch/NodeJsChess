@@ -43,9 +43,11 @@ wss.on("connection", function (ws) {
             game_id = game_number;
             game_number++;
             ws.game = new Game(game_id)
+            let mess = new Message("initial", ws.game.board);
+            sendActive(wss, websocket, mess);
+        } else if (message.type == 'turn'){
+            console.log(message.data);
         }
-        let mess = new Message("initial", ws.game.board);
-        sendActive(wss, websocket, mess);
     });
     ws.on("close", function incoming() {
         game_number--;
