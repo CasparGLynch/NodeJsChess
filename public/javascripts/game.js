@@ -16,10 +16,12 @@ socket.onmessage = function(event){
     if (resp.type == "initial"){
         current_state = resp.data;
         generate_board(current_state);
-    } else if (resp.type == "invalid_turn"){
+    } else if (resp.type == "valid_turn"){
         document.body.innerHTML = '';
         current_state = resp.data;
         generate_board(current_state);
+    } else if (resp.type == "invalid_turn"){
+        alert('bad');
     }
 }
 
@@ -104,7 +106,7 @@ function select_piece(element) {
             element.click_count = undefined;
             selected_pieces.pop();
         // case for first move
-        } else if (selected_pieces.length == 0){
+        } else if ((selected_pieces.length == 0) & (current_state[row][column] != '00')){
             element.click_count = 1;
             selected_pieces.push(element.id);
         }

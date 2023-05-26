@@ -13,16 +13,6 @@
  *  - 2 = White 
  */
 var alphabet = "abcdefgh";
-var chessAI = require('chess-ai-kong');
-chessAI.setOptions(
-    {
-      depth: 2,
-      monitor: true,
-      strategy: 'basic',
-      timeout: 10000
-    }
-);
-
 class Game {
     constructor(game_id) {
         this.game_id = game_id;
@@ -36,8 +26,6 @@ class Game {
         this.board[5] = new Array(8)
         this.board[6] = new Array(8)
         this.board[7] = new Array(8)
-
-
 
         // initialise first row 
         this.board[0][0] = '12';
@@ -83,10 +71,9 @@ class Game {
         let later_column = code[1].charAt(1);
 
         let move = this.to_pgn(code[1], code[0]);
-        console.log(move);
-        let ai_move = chessAI.play([String(move)]);
-        console.log(ai_move);
+        this.game_state.push(move);
         this.board[later_row][later_column] = this.board[initial_row][initial_column];
+        console.log(this.game_state);
         this.board[initial_row][initial_column] = '00';
     }
 
