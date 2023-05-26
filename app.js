@@ -4,15 +4,7 @@ const websocket = require("ws");
 const Game = require("./calculations");
 
 // setting up the chess AI
-var chessAI = require('chess-ai-kong');
-chessAI.setOptions(
-    {
-      depth: 4,
-      monitor: true,
-      strategy: 'basic',
-      timeout: 10000
-    }
-);
+
 
 var app = express();
 var port = process.argv[2];
@@ -46,7 +38,9 @@ wss.on("connection", function (ws) {
             let mess = new Message("initial", ws.game.board);
             sendActive(wss, websocket, mess);
         } else if (message.type == 'turn'){
-            console.log(message.data);
+            ws.game.move(message.data);
+            let mess = new Message("invalid_turn", ws.game.board);
+            sendActive(wss, websocket, mess);
         }
     });
     ws.on("close", function incoming() {
